@@ -1,0 +1,172 @@
+<!-- Подключаем иконки (FontAwesome) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="main-container">
+
+  <!-- SVG Анимация -->
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <image href="center.jpg" width="200" height="200" preserveAspectRatio="xMidYMid slice" clip-path="url(#blobClip)" />
+    <clipPath id="blobClip">
+      <path
+        d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+        transform="translate(100 100)" />
+    </clipPath>
+
+    <!-- Тень/Фон блоба -->
+    <path class="blob"
+      d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+      transform="translate(100 100)" fill="transparent" />
+
+    <!-- Путь для текста -->
+    <path id="textPathCurve"
+      d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+      transform="translate(100 100)" fill="none" stroke="none" />
+
+    <text class="text-content">
+      <textPath href="#textPathCurve" startOffset="0%">ios-developer ios-developer ios-developer ios-developer
+        ios-developer
+        <animate attributeName="startOffset" from="0%" to="100%" dur="15s" repeatCount="indefinite" />
+      </textPath>
+      <textPath href="#textPathCurve" startOffset="100%">ios-developer ios-developer ios-developer ios-developer
+        ios-developer
+        <animate attributeName="startOffset" from="-100%" to="0%" dur="15s" repeatCount="indefinite" />
+      </textPath>
+    </text>
+  </svg>
+
+  <!-- Соц сети -->
+  <div class="social-menu">
+    <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+</div>
+
+
+<!-- СТИЛИ -->
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    /* ТЕМНЫЙ ФОН: Градиент от темно-серого к черному */
+    background: radial-gradient(circle at 50% 50%, #3a3a3a 0%, #1a1a1a 40%, #000000 100%);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  /* --- SVG --- */
+  svg {
+    width: 500px;
+    height: 500px;
+  }
+
+  svg #blobClip {
+    transform-origin: center;
+    transition: ease-out transform .4s;
+  }
+
+  svg:hover #blobClip {
+    transform: scale(1.15) translate(0%, 0%);
+  }
+
+  /* Эффект текста при наведении */
+  svg:hover .text-content {
+    fill: #ef5350;
+    /* Красный акцент при наведении */
+    text-shadow: 0 0 10px rgba(239, 83, 80, 0.5);
+    mix-blend-mode: normal;
+  }
+
+  .text-content {
+    font: 700 10px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    /* ТЕКСТ ТЕПЕРЬ БЕЛЫЙ */
+    fill: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: normal;
+    transition: ease all .5s;
+    pointer-events: none;
+  }
+
+
+  .social-menu {
+    display: flex;
+    gap: 40px;
+    z-index: 10;
+  }
+
+  .social-menu a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+
+    /* ТЕМНЫЕ КНОПКИ */
+    background-color: #262626;
+    border: 1px solid #333;
+    /* Тонкая рамка */
+    border-radius: 50%;
+    text-decoration: none;
+
+    /* БЕЛЫЕ ИКОНКИ */
+    color: #e0e0e0;
+    font-size: 40px;
+
+    /* Тень под кнопки более глубокая и темная */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .social-menu a:hover {
+    transform: translateY(-10px) scale(1.1);
+    background-color: #333;
+    color: #ef5350;
+    /* Акцентный цвет при наведении */
+    box-shadow: 0 15px 35px rgba(239, 83, 80, 0.2);
+    border-color: #ef5350;
+  }
+
+  /* DEV BADGE (Адаптация под темную тему) */
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
+
+  #dev {
+    font-family: "Montserrat", sans-serif;
+    position: fixed;
+    font-size: 14px;
+    top: 10px;
+    left: 10px;
+    padding: 1em;
+    /* Темный бейдж */
+    color: #fff;
+    background-color: #222;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  #dev a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    transition: ease all 0.4s;
+  }
+
+  #dev a:hover {
+    color: #ef5350;
+    text-decoration: underline;
+  }
+</style>
