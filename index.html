@@ -2,7 +2,12 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Добавили viewport-fit=cover, чтобы сайт заходил за безопасные зоны (челку и низ) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- Указываем браузеру перекрасить интерфейс (верх и низ) в черный цвет -->
+  <meta name="theme-color" content="#000000">
+  
   <title>iOS Developer Portfolio</title>
   
   <!-- Подключаем иконки (FontAwesome) -->
@@ -17,15 +22,22 @@
       box-sizing: border-box;
     }
 
+    /* Красим корневой элемент в черный, чтобы при оттягивании страницы не было белого фона */
+    html {
+      background-color: #000000;
+    }
+
     body {
-      /* Убрали flex из body, чтобы при скролле не обрезался верхний край на мобилках */
       display: block; 
       min-height: 100dvh; 
       background: radial-gradient(circle at 50% 50%, #3a3a3a 0%, #1a1a1a 40%, #000000 100%);
       margin: 0;
-      /* overflow: hidden; - УБРАЛИ, чтобы можно было скроллить вниз к барабанам */
-      overflow-x: hidden; /* Блокируем только горизонтальный скролл */
+      overflow-x: hidden; 
       font-family: system-ui, -apple-system, sans-serif;
+      
+      /* Поддержка безопасных зон на iPhone (чтобы контент не залезал под челку) */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     .main-container {
@@ -34,8 +46,8 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      min-height: 100dvh; /* Контейнер растягивается на весь экран и центрирует контент */
-      padding: 60px 20px 40px 20px; /* Отступы, чтобы контент не прилипал к краям при скролле */
+      min-height: 100dvh; 
+      padding: 60px 20px 40px 20px; 
     }
 
     /* --- SVG (Адаптация) --- */
@@ -108,7 +120,7 @@
 
     /* --- НОВЫЙ БЛОК: БАРАБАНЫ --- */
     .drums-promo {
-      margin-top: 60px; /* Отступ от кнопок соцсетей */
+      margin-top: 60px; 
       display: flex;
       align-items: center;
       background-color: #262626;
@@ -186,14 +198,13 @@
       }
       svg { margin-bottom: 20px; }
       
-      /* Адаптация блока барабанов для мобилок */
       .drums-promo {
         flex-direction: column;
         text-align: center;
         padding: 25px 15px;
       }
       .drums-btn {
-        align-self: center; /* Центрируем кнопку на телефонах */
+        align-self: center; 
       }
     }
 
@@ -208,7 +219,8 @@
       font-family: "Montserrat", sans-serif;
       position: fixed;
       font-size: 12px;
-      top: 15px;
+      /* env(safe-area-inset-top) сдвигает бейдж ниже челки iPhone */
+      top: calc(15px + env(safe-area-inset-top));
       left: 15px;
       padding: 0.8em 1.2em;
       color: #fff;
